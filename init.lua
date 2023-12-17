@@ -32,6 +32,7 @@ vim.opt.rtp:prepend(lazypath)
 
 local plugins = {
     { "navarasu/onedark.nvim", name = "onedark" },
+    { "Mofiqul/vscode.nvim" }
     {
         "nvim-telescope/telescope.nvim", tag = "0.1.5",
         dependencies = { "nvim-lua/plenary.nvim" }
@@ -46,7 +47,8 @@ local opts = {}
 require("lazy").setup(plugins, opts)
 
 -- Plug in stuff
-require('onedark').load()
+require("onedark").load()
+-- require("vscode").load()
 
 local builtin = require("telescope.builtin")
 vim.keymap.set("n", "<C-p>", builtin.find_files, {})
