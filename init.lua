@@ -41,6 +41,7 @@ local plugins = {
     { "m4xshen/autoclose.nvim" },
     { "tpope/vim-commentary" },
     { "tpope/vim-surround" },
+    { "HiPhish/nvim-ts-rainbow2" },
 }
 local opts = {}
 
@@ -59,6 +60,9 @@ configs.setup({
     ensure_installed = { "lua", "python", "c", "cpp", "make", "javascript" },
     highlight = { enable = true },
     indent = { enable = true },
+    rainbow = {
+        enable = true
+    },
 })
 
 require("autoclose").setup()
