@@ -1,4 +1,4 @@
--- Setting Stuff
+-- Setting Stuff vim.cmd("set number")
 vim.cmd("set number")
 vim.cmd("set relativenumber")
 vim.cmd("set expandtab")
@@ -10,9 +10,16 @@ vim.cmd("set mouse=a")
 -- Mapping Stuff
 vim.cmd("noremap <SPACE> <Nop>")
 vim.g.mapleader = " "
+
 vim.cmd("inoremap kj <Esc>")
 vim.cmd("vnoremap kj <Esc>")
 vim.cmd("nnoremap <Enter> o<Esc>")
+vim.cmd("nnoremap <Backspace> O<Esc>")
+vim.cmd("nnoremap L $")
+vim.cmd("nnoremap H ^")
+vim.cmd("nnoremap K H")
+vim.cmd("nnoremap J L")
+
 vim.cmd("noremap <leader>y \"+y")
 vim.cmd("noremap <leader>p \"+p")
 
@@ -41,15 +48,16 @@ local plugins = {
     { "m4xshen/autoclose.nvim" },
     { "tpope/vim-commentary" },
     { "tpope/vim-surround" },
-    { "HiPhish/nvim-ts-rainbow2" },
+    -- { "HiPhish/nvim-ts-rainbow2" },
+    { "ThePrimeagen/vim-be-good" },
 }
 local opts = {}
 
 require("lazy").setup(plugins, opts)
 
 -- Plug in stuff
-require("onedark").load()
--- require("vscode").load()
+-- require("onedark").load()
+require("vscode").load()
 
 local builtin = require("telescope.builtin")
 vim.keymap.set("n", "<C-p>", builtin.find_files, {})
