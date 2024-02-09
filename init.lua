@@ -15,7 +15,7 @@ vim.cmd("inoremap kj <Esc>")
 vim.cmd("vnoremap kj <Esc>")
 vim.cmd("nnoremap <Enter> o<Esc>")
 vim.cmd("nnoremap <Backspace> O<Esc>")
-vim.cmd("noremap H 0")  # can also be ^ for going to first non-whitespace character
+vim.cmd("noremap H 0")  -- can also be ^ for going to first non-whitespace character
 vim.cmd("noremap L $")
 vim.cmd("noremap K H")
 vim.cmd("noremap J L")
