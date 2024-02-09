@@ -15,10 +15,10 @@ vim.cmd("inoremap kj <Esc>")
 vim.cmd("vnoremap kj <Esc>")
 vim.cmd("nnoremap <Enter> o<Esc>")
 vim.cmd("nnoremap <Backspace> O<Esc>")
-vim.cmd("nnoremap L $")
-vim.cmd("nnoremap H ^")
-vim.cmd("nnoremap K H")
-vim.cmd("nnoremap J L")
+vim.cmd("noremap H 0")  # can also be ^ for going to first non-whitespace character
+vim.cmd("noremap L $")
+vim.cmd("noremap K H")
+vim.cmd("noremap J L")
 
 vim.cmd('noremap <leader>y "+y')
 vim.cmd('noremap <leader>p "+p')
@@ -40,6 +40,9 @@ vim.opt.rtp:prepend(lazypath)
 local plugins = {
     { "navarasu/onedark.nvim", name = "onedark" },
     { "Mofiqul/vscode.nvim" },
+    { "folke/tokyonight.nvim" },
+    { "catppuccin/nvim", name = "catppuccin", priority = 1000 },
+
     {
         "nvim-telescope/telescope.nvim",
         tag = "0.1.5",
@@ -53,7 +56,6 @@ local plugins = {
     { "MunifTanjim/nui.nvim" },
     { "folke/noice.nvim" },
     { "rcarriga/nvim-notify" },
-    { "folke/tokyonight.nvim" },
     {'akinsho/bufferline.nvim', version = "*", dependencies = 'nvim-tree/nvim-web-devicons'}
 }
 local opts = {}
@@ -63,7 +65,8 @@ require("lazy").setup(plugins, opts)
 -- Plug in stuff
 -- require("onedark").load()
 -- require("vscode").load()
-vim.cmd[[colorscheme tokyonight]]
+-- vim.cmd[[colorscheme tokyonight]]
+vim.cmd.colorscheme "catppuccin-mocha"
 
 local builtin = require("telescope.builtin")
 vim.keymap.set("n", "<C-p>", builtin.find_files, {})
