@@ -56,7 +56,10 @@ local plugins = {
     { "MunifTanjim/nui.nvim" },
     { "folke/noice.nvim" },
     { "rcarriga/nvim-notify" },
-    {'akinsho/bufferline.nvim', version = "*", dependencies = 'nvim-tree/nvim-web-devicons'}
+    {
+        'nvim-lualine/lualine.nvim',
+        dependencies = { 'nvim-tree/nvim-web-devicons' }
+    },
 }
 local opts = {}
 
@@ -101,5 +104,5 @@ require("noice").setup({
   },
 })
 
-require("bufferline").setup{}
 require("autoclose").setup()
+require "plugins.lualine-conf"
