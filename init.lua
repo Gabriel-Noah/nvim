@@ -15,13 +15,23 @@ vim.cmd("inoremap kj <Esc>")
 vim.cmd("vnoremap kj <Esc>")
 vim.cmd("nnoremap <Enter> o<Esc>")
 vim.cmd("nnoremap <Backspace> O<Esc>")
-vim.cmd("noremap H 0")  -- can also be ^ for going to first non-whitespace character
+vim.cmd("noremap H ^")  -- can be ^ or 0
 vim.cmd("noremap L $")
 vim.cmd("noremap K H")
 vim.cmd("noremap J L")
 
 vim.cmd('noremap <leader>y "+y')
 vim.cmd('noremap <leader>p "+p')
+vim.cmd('map <ScrollWheelUp> <C-y>')
+vim.cmd('map <ScrollWheelDown> <C-e>')
+vim.cmd('nnoremap <leader>w :w<CR>')
+
+-- Rename symbol keymaps
+vim.cmd("nnoremap gr gd[{V%::s/<C-R>///gc<left><left><left>")
+vim.cmd("nnoremap gR gD:%s/<C-R>///gc<left><left><left>")
+
+-- Clears / register
+vim.cmd("noremap <leader>/ :call setreg('/', '')<CR>")
 
 -- Lazy stuff
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
@@ -60,6 +70,22 @@ local plugins = {
         'nvim-lualine/lualine.nvim',
         dependencies = { 'nvim-tree/nvim-web-devicons' }
     },
+    {
+        "iamcco/markdown-preview.nvim",
+        cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
+        ft = { "markdown" },
+        build = function() vim.fn["mkdp#util#install"]() end,
+    },
+    { "neovim/nvim-lspconfig" },
+    {
+        "hrsh7th/nvim-cmp",
+        dependencies = { "hrsh7th/cmp-buffer", "hrsh7th/cmp-path" , "hrsh7th/cmp-nvim-lsp" }
+    },
+    {
+        "williamboman/mason.nvim",
+        dependencies = { "williamboman/mason-lspconfig.nvim" }
+    },
+    { 'stevearc/oil.nvim' },
 }
 local opts = {}
 
@@ -84,6 +110,10 @@ configs.setup({
 		enable = true,
 	},
 })
+
+-- Buffer based file thingy
+require("oil").setup()
+vim.keymap.set("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" })
 
 require("noice").setup({
   lsp = {
@@ -145,3 +175,57 @@ require('lualine').setup {
     inactive_winbar = {},
   extensions = {}
 }
+
+-- lsp stuff
+require("mason").setup()
+local mason_lspconfig = require("mason-lspconfig")
+mason_lspconfig.setup({
+    ensure_installed = {
+        --[[
+        get servers from this link to avoid headache
+        https://github.com/williamboman/mason-lspconfig.nvim?tab=readme-ov-file#available-lsp-servers
+        --]]
+        "lua_ls",   --lua
+        "pyright",  --python
+        "clangd",   -- c/c++
+        "jdtls",     -- java
+    },
+    automatic_installation = true
+})
+
+local cmp = require('cmp')
+cmp.setup({
+    completion = {
+        completeopt = "menu,menuone,preview,noinsert"
+    },
+    mapping = cmp.mapping.preset.insert({
+        ["<C-k>"] = cmp.mapping.select_prev_item(),
+        ["<C-j>"] = cmp.mapping.select_next_item(),
+        ["<Tab>"] = cmp.mapping.confirm({ select=false })
+    }),
+    sources = cmp.config.sources({
+        { name = "buffer" },
+        { name = "nvim_lsp" },
+        { name = "path" }
+    }),
+})
+local capabilities = require('cmp_nvim_lsp').default_capabilities()
+
+local lspconfig = require('lspconfig')
+lspconfig.pyright.setup{
+    capabilities = capabilities
+}
+
+lspconfig.lua_ls.setup{
+    settings = {
+        Lua = {
+            diagnostics = {
+                globals = { 'vim' }  -- stops errors in vim lua files
+            }
+        }
+    }
+}
+
+lspconfig.clangd.setup{}
+
+lspconfig.jdtls.setup{}
