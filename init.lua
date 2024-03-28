@@ -114,6 +114,8 @@ configs.setup({
 -- Buffer based file thingy
 require("oil").setup()
 vim.keymap.set("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" })
+-- Uses Oil if nvim is ran with no arguments
+if vim.fn.argv(0) == '' then vim.cmd('Oil') end
 
 require("noice").setup({
   lsp = {
