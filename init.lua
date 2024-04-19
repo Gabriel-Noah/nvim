@@ -6,6 +6,7 @@ vim.cmd("set tabstop=4")
 vim.cmd("set shiftwidth=4")
 vim.cmd("set autoindent")
 vim.cmd("set mouse=a")
+vim.cmd("set nowrap")
 
 -- Mapping Stuff
 vim.cmd("noremap <SPACE> <Nop>")
@@ -27,7 +28,7 @@ vim.cmd('map <ScrollWheelDown> <C-e>')
 vim.cmd('nnoremap <leader>w :w<CR>')
 
 -- Rename symbol keymaps
-vim.cmd("nnoremap gr gd[{V%::s/<C-R>///gc<left><left><left>")
+vim.cmd("nnoremap gr gd[{V%::s/<C-R>///gc<left><left><left>")  --doesn't work in languages like python or lua
 vim.cmd("nnoremap gR gD:%s/<C-R>///gc<left><left><left>")
 
 -- Clears / register
@@ -86,6 +87,7 @@ local plugins = {
         dependencies = { "williamboman/mason-lspconfig.nvim" }
     },
     { 'stevearc/oil.nvim' },
+    { "Djancyp/better-comments.nvim" },
 }
 local opts = {}
 
@@ -178,6 +180,33 @@ require('lualine').setup {
   extensions = {}
 }
 
+-- better comment stuff
+require("better-comment").Setup({
+    -- Some colors are from catppuccin
+    tags = {
+        {
+            name = "TODO",
+            fg = "orange",
+            bg = ""
+        },
+        {
+            name = "*",
+            fg = "#a6e3a1", -- mocha
+            bg = ""
+        },
+        {
+            name = "!",
+            fg = "red",
+            bg = ""
+        },
+        {
+            name = "?",
+            fg = "#1e66f5", -- latte
+            bg = ""
+        },
+    }
+})
+
 -- lsp stuff
 require("mason").setup()
 local mason_lspconfig = require("mason-lspconfig")
@@ -197,6 +226,7 @@ mason_lspconfig.setup({
 
 local cmp = require('cmp')
 cmp.setup({
+    -- snippet = { expand = function() end },
     completion = {
         completeopt = "menu,menuone,preview,noinsert"
     },
