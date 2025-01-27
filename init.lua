@@ -28,8 +28,6 @@ vim.cmd('map <ScrollWheelDown> <C-e>')
 vim.cmd('nnoremap <leader>w :w<CR>')
 
 -- Rename symbol keymaps
--- vim.cmd("nnoremap gr gd[{V%::s/<C-R>///gc<left><left><left>")  --doesn't work in languages like python or lua
--- vim.cmd("nnoremap gR gD:%s/<C-R>///gc<left><left><left>")      -- commented out because its insanely shit
 vim.keymap.set("n", "gr", vim.lsp.buf.rename)
 
 -- Clears / register
@@ -88,7 +86,6 @@ local plugins = {
         dependencies = { "williamboman/mason-lspconfig.nvim" }
     },
     { 'stevearc/oil.nvim' },
-    { "Djancyp/better-comments.nvim" },
 }
 local opts = {}
 
@@ -180,33 +177,6 @@ require('lualine').setup {
     inactive_winbar = {},
   extensions = {}
 }
-
--- better comment stuff
--- require("better-comment").Setup({
---     -- Some colors are from catppuccin
---     tags = {
---         {
---             name = "TODO",
---             fg = "orange",
---             bg = ""
---         },
---         {
---             name = "*",
---             fg = "#a6e3a1", -- mocha
---             bg = ""
---         },
---         {
---             name = "!",
---             fg = "red",
---             bg = ""
---         },
---         {
---             name = "?",
---             fg = "#1e66f5", -- latte
---             bg = ""
---         },
---     }
--- })
 
 -- lsp stuff
 require("mason").setup()
