@@ -28,8 +28,9 @@ vim.cmd('map <ScrollWheelDown> <C-e>')
 vim.cmd('nnoremap <leader>w :w<CR>')
 
 -- Rename symbol keymaps
-vim.cmd("nnoremap gr gd[{V%::s/<C-R>///gc<left><left><left>")  --doesn't work in languages like python or lua
-vim.cmd("nnoremap gR gD:%s/<C-R>///gc<left><left><left>")
+-- vim.cmd("nnoremap gr gd[{V%::s/<C-R>///gc<left><left><left>")  --doesn't work in languages like python or lua
+-- vim.cmd("nnoremap gR gD:%s/<C-R>///gc<left><left><left>")      -- commented out because its insanely shit
+vim.keymap.set("n", "gr", vim.lsp.buf.rename)
 
 -- Clears / register
 vim.cmd("noremap <leader>/ :call setreg('/', '')<CR>")
@@ -105,7 +106,7 @@ vim.keymap.set("n", "<leader>fg", builtin.live_grep, {})
 
 local configs = require("nvim-treesitter.configs")
 configs.setup({
-	ensure_installed = { "lua", "python", "c", "cpp", "make", "javascript" },
+	ensure_installed = { "lua", "python", "c", "cpp", "make", "javascript", "java" },
 	highlight = { enable = true },
 	indent = { enable = true },
 	rainbow = {
@@ -181,31 +182,31 @@ require('lualine').setup {
 }
 
 -- better comment stuff
-require("better-comment").Setup({
-    -- Some colors are from catppuccin
-    tags = {
-        {
-            name = "TODO",
-            fg = "orange",
-            bg = ""
-        },
-        {
-            name = "*",
-            fg = "#a6e3a1", -- mocha
-            bg = ""
-        },
-        {
-            name = "!",
-            fg = "red",
-            bg = ""
-        },
-        {
-            name = "?",
-            fg = "#1e66f5", -- latte
-            bg = ""
-        },
-    }
-})
+-- require("better-comment").Setup({
+--     -- Some colors are from catppuccin
+--     tags = {
+--         {
+--             name = "TODO",
+--             fg = "orange",
+--             bg = ""
+--         },
+--         {
+--             name = "*",
+--             fg = "#a6e3a1", -- mocha
+--             bg = ""
+--         },
+--         {
+--             name = "!",
+--             fg = "red",
+--             bg = ""
+--         },
+--         {
+--             name = "?",
+--             fg = "#1e66f5", -- latte
+--             bg = ""
+--         },
+--     }
+-- })
 
 -- lsp stuff
 require("mason").setup()
