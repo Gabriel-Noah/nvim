@@ -8,30 +8,7 @@ vim.cmd("set autoindent")
 vim.cmd("set mouse=a")
 vim.cmd("set nowrap")
 
--- Mapping Stuff
-vim.cmd("noremap <SPACE> <Nop>")
-vim.g.mapleader = " "
-
-vim.cmd("inoremap kj <Esc>")
-vim.cmd("vnoremap kj <Esc>")
-vim.cmd("nnoremap <Enter> o<Esc>")
-vim.cmd("nnoremap <Backspace> O<Esc>")
-vim.cmd("noremap H ^")  -- can be ^ or 0
-vim.cmd("noremap L $")
-vim.cmd("noremap K H")
-vim.cmd("noremap J L")
-
-vim.cmd('noremap <leader>y "+y')
-vim.cmd('noremap <leader>p "+p')
-vim.cmd('map <ScrollWheelUp> <C-y>')
-vim.cmd('map <ScrollWheelDown> <C-e>')
-vim.cmd('nnoremap <leader>w :w<CR>')
-
--- Rename symbol keymaps
-vim.keymap.set("n", "gr", vim.lsp.buf.rename)
-
--- Clears / register
-vim.cmd("noremap <leader>/ :call setreg('/', '')<CR>")
+require("keymap")
 
 -- Lazy stuff
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
@@ -47,46 +24,7 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
-local plugins = {
-    { "navarasu/onedark.nvim", name = "onedark" },
-    { "Mofiqul/vscode.nvim" },
-    { "folke/tokyonight.nvim" },
-    { "catppuccin/nvim", name = "catppuccin", priority = 1000 },
-
-    {
-        "nvim-telescope/telescope.nvim",
-        tag = "0.1.5",
-        dependencies = { "nvim-lua/plenary.nvim" },
-    },
-    { "nvim-treesitter/nvim-treesitter", build = ":TSUpdate" },
-    { "m4xshen/autoclose.nvim" },
-    { "tpope/vim-commentary" },
-    { "tpope/vim-surround" },
-    { "ThePrimeagen/vim-be-good" },
-    { "MunifTanjim/nui.nvim" },
-    { "folke/noice.nvim" },
-    { "rcarriga/nvim-notify" },
-    {
-        'nvim-lualine/lualine.nvim',
-        dependencies = { 'nvim-tree/nvim-web-devicons' }
-    },
-    {
-        "iamcco/markdown-preview.nvim",
-        cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
-        ft = { "markdown" },
-        build = function() vim.fn["mkdp#util#install"]() end,
-    },
-    { "neovim/nvim-lspconfig" },
-    {
-        "hrsh7th/nvim-cmp",
-        dependencies = { "hrsh7th/cmp-buffer", "hrsh7th/cmp-path" , "hrsh7th/cmp-nvim-lsp" }
-    },
-    {
-        "williamboman/mason.nvim",
-        dependencies = { "williamboman/mason-lspconfig.nvim" }
-    },
-    { 'stevearc/oil.nvim' },
-}
+local plugins = require('plugins')
 local opts = {}
 
 require("lazy").setup(plugins, opts)
