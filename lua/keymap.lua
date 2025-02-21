@@ -22,3 +22,5 @@ vim.keymap.set("n", "gr", vim.lsp.buf.rename)
 
 -- Clears / register
 vim.cmd("noremap <leader>/ :call setreg('/', '')<CR>")
+
+vim.cmd("nnoremap gq :BufferLinePickClose<CR>")
