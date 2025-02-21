@@ -37,4 +37,5 @@ return {
         dependencies = { "williamboman/mason-lspconfig.nvim" }
     },
     { 'stevearc/oil.nvim' },
+    { 'akinsho/bufferline.nvim' },
 }

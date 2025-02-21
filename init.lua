@@ -1,4 +1,4 @@
--- Setting Stuff vim.cmd("set number")
+-- Setting Stuff
 vim.cmd("set number")
 vim.cmd("set relativenumber")
 vim.cmd("set expandtab")
@@ -7,7 +7,9 @@ vim.cmd("set shiftwidth=4")
 vim.cmd("set autoindent")
 vim.cmd("set mouse=a")
 vim.cmd("set nowrap")
+vim.cmd("set mousemoveevent")
 
+-- Loads keymaps
 require("keymap")
 
 -- Lazy stuff
@@ -41,7 +43,7 @@ vim.keymap.set("n", "<leader>fg", builtin.live_grep, {})
 
 local configs = require("nvim-treesitter.configs")
 configs.setup({
-	ensure_installed = { "lua", "python", "c", "cpp", "make", "javascript", "java" },
+	ensure_installed = { "lua", "python", "c", "cpp", "make", "javascript", "java", "rust" },
 	highlight = { enable = true },
 	indent = { enable = true },
 	rainbow = {
@@ -116,6 +118,21 @@ require('lualine').setup {
   extensions = {}
 }
 
+vim.opt.termguicolors = true
+local bufferline = require("bufferline")
+bufferline.setup {
+    options = {
+        style_preset = bufferline.style_preset.minimal,
+        hover = {
+            enabled = true,
+            delay = 50,
+            reveal = {'close'},
+        },
+        always_show_bufferline = false,
+        diagnostics = "nvim_lsp"
+    }
+}
+
 -- lsp stuff
 require("mason").setup()
 local mason_lspconfig = require("mason-lspconfig")
@@ -125,10 +142,11 @@ mason_lspconfig.setup({
         get servers from this link to avoid headache
         https://github.com/williamboman/mason-lspconfig.nvim?tab=readme-ov-file#available-lsp-servers
         --]]
-        "lua_ls",   --lua
-        "pyright",  --python
-        "clangd",   -- c/c++
-        "jdtls",     -- java
+        "lua_ls",           --lua
+        "pyright",          --python
+        "clangd",           -- c/c++
+        "jdtls",            -- java
+        "rust_analyzer",    -- rust
     },
     automatic_installation = true
 })
@@ -170,3 +188,5 @@ lspconfig.lua_ls.setup{
 lspconfig.clangd.setup{}
 
 lspconfig.jdtls.setup{}
+
+lspconfig.rust_analyzer.setup{}
