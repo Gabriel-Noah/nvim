@@ -4,22 +4,22 @@ return {
     config = function ()
         require('lualine').setup {
             options = {
-            icons_enabled = true,
-            theme = 'auto',
-            component_separators = { left = '', right = ''},
-            section_separators = { left = '', right = ''},
-            disabled_filetypes = {
-                statusline = {},
-                winbar = {},
-            },
-            ignore_focus = {},
-            always_divide_middle = true,
-            globalstatus = false,
-            refresh = {
-                statusline = 1000,
-                tabline = 1000,
-                winbar = 1000,
-            }
+                icons_enabled = true,
+                theme = 'auto',
+                component_separators = { left = '', right = ''},
+                section_separators = { left = '', right = ''},
+                disabled_filetypes = {
+                    statusline = {},
+                    winbar = {},
+                },
+                ignore_focus = {},
+                always_divide_middle = true,
+                globalstatus = false,
+                refresh = {
+                    statusline = 1000,
+                    tabline = 1000,
+                    winbar = 1000,
+                }
             },
             sections = {
                 lualine_a = {'mode'},
@@ -29,7 +29,7 @@ return {
                 lualine_y = {''},
                 lualine_z = {'location'}
             },
-                inactive_sections = {
+            inactive_sections = {
                 lualine_a = {},
                 lualine_b = {},
                 lualine_c = {'filename'},
@@ -40,7 +40,7 @@ return {
             tabline = {},
             winbar = {},
             inactive_winbar = {},
-          extensions = {}
+            extensions = {}
         }
     end
 }
