@@ -1,9 +1,21 @@
+-- Setting Stuff
+vim.cmd("set number")
+vim.cmd("set relativenumber")
+vim.cmd("set expandtab")
+vim.cmd("set tabstop=4")
+vim.cmd("set shiftwidth=4")
+vim.cmd("set autoindent")
+vim.cmd("set mouse=a")
+vim.cmd("set nowrap")
+vim.cmd("set mousemoveevent")
+
 -- Mapping Stuff
 vim.cmd("noremap <SPACE> <Nop>")
 vim.g.mapleader = " "
 
 vim.cmd("inoremap kj <Esc>")
-vim.cmd("vnoremap kj <Esc>")
+-- disabled the visual varient because it was pissing me off
+-- vim.cmd("vnoremap kj <Esc>")
 vim.cmd("nnoremap <Enter> o<Esc>")
 vim.cmd("nnoremap <Backspace> O<Esc>")
 vim.cmd("noremap H ^")  -- can be ^ or 0
@@ -22,5 +34,3 @@ vim.keymap.set("n", "gr", vim.lsp.buf.rename)
 
 -- Clears / register
 vim.cmd("noremap <leader>/ :call setreg('/', '')<CR>")
-
-vim.cmd("nnoremap gq :BufferLinePickClose<CR>")
