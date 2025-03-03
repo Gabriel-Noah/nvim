@@ -29,8 +29,12 @@ vim.cmd('map <ScrollWheelUp> <C-y>')
 vim.cmd('map <ScrollWheelDown> <C-e>')
 vim.cmd('nnoremap <leader>w :w<CR>')
 
--- Rename symbol keymap
+-- LSP Keymaps
 vim.keymap.set("n", "gr", vim.lsp.buf.rename)
+vim.keymap.set("n", "gh", vim.lsp.buf.hover)
+vim.keymap.set("n", "gd", vim.lsp.buf.definition)
+vim.keymap.set("n", "gD", vim.lsp.buf.declaration)
+vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action)
 
 -- Clears / register
 vim.cmd("noremap <leader>/ :call setreg('/', '')<CR>")
