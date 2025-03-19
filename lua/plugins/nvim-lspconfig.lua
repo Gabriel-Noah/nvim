@@ -22,5 +22,7 @@ return {
         lspconfig.jdtls.setup{}
 
         lspconfig.rust_analyzer.setup{}
+
+        lspconfig.vtsls.setup{}
     end
 }

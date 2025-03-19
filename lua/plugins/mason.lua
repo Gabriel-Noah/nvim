@@ -15,6 +15,7 @@ return {
                 "clangd",           -- c/c++
                 "jdtls",            -- java
                 "rust_analyzer",    -- rust
+                "vtsls",            -- Typescript
             },
             automatic_installation = true
         })
