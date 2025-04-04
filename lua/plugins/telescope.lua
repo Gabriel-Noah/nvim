@@ -13,6 +13,17 @@ return {
         "nvim-telescope/telescope-ui-select.nvim",
         config = function ()
             require("telescope").setup {
+                defaults = {
+                    mappings = {
+                        i = {
+                            ["<C-j>"] = "move_selection_next",
+                            ["<C-k>"] = "move_selection_previous",
+                            ["<esc>"] = "close",
+                            ["<Up>"] = "preview_scrolling_up",
+                            ["<Down>"] = "preview_scrolling_down"
+                        }
+                    }
+                },
                 extensions = {
                     ["ui-select"] = {
                         require("telescope.themes").get_dropdown {}
