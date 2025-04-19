@@ -38,3 +38,5 @@ vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action)
 
 -- Clears / register
 vim.cmd("noremap <leader>/ :call setreg('/', '')<CR>")
+
+vim.diagnostic.config({ virtual_text = true })
