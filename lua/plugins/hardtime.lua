@@ -4,7 +4,7 @@ return {
     config = function ()
         require("hardtime").setup({
             disable_mouse = false,
-            disabled_filetypes = { "qf", "netrw", "NvimTree", "lazy", "mason", "oil", "markdown", "alpha" },
+            disabled_filetypes = { "qf", "netrw", "NvimTree", "lazy", "mason", "oil", "markdown", "alpha", "NvMenu" },
         })
     end
 }
