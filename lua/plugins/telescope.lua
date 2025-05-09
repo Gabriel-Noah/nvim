@@ -2,16 +2,16 @@ return {
     {
         "nvim-telescope/telescope.nvim",
         dependencies = { "nvim-lua/plenary.nvim" },
-        config = function ()
+        config = function()
             local builtin = require("telescope.builtin")
             vim.keymap.set("n", "<C-p>", builtin.find_files, {})
             vim.keymap.set("n", "<leader>fg", builtin.live_grep, {})
-        end
+        end,
     },
     {
         "nvim-telescope/telescope-ui-select.nvim",
-        config = function ()
-            require("telescope").setup {
+        config = function()
+            require("telescope").setup({
                 defaults = {
                     mappings = {
                         i = {
@@ -19,17 +19,17 @@ return {
                             ["<C-k>"] = "move_selection_previous",
                             ["<esc>"] = "close",
                             ["<Up>"] = "preview_scrolling_up",
-                            ["<Down>"] = "preview_scrolling_down"
-                        }
-                    }
+                            ["<Down>"] = "preview_scrolling_down",
+                        },
+                    },
                 },
                 extensions = {
                     ["ui-select"] = {
-                        require("telescope.themes").get_dropdown {}
-                    }
-                }
-            }
+                        require("telescope.themes").get_dropdown({}),
+                    },
+                },
+            })
             require("telescope").load_extension("ui-select")
-        end
-    }
+        end,
+    },
 }

@@ -1,6 +1,6 @@
 return {
     "goolord/alpha-nvim",
-    dependencies = { 'nvim-tree/nvim-web-devicons', "MaximilianLloyd/ascii.nvim" },
+    dependencies = { "nvim-tree/nvim-web-devicons", "MaximilianLloyd/ascii.nvim" },
     config = function()
         local if_nil = vim.F.if_nil
 
@@ -113,5 +113,5 @@ return {
             },
         }
         require("alpha").setup(config)
-    end
+    end,
 }

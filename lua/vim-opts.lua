@@ -18,16 +18,16 @@ vim.cmd("inoremap kj <Esc>")
 -- vim.cmd("vnoremap kj <Esc>")
 vim.cmd("nnoremap <Enter> o<Esc>")
 vim.cmd("nnoremap <Backspace> O<Esc>")
-vim.cmd("noremap H ^")  -- can be ^ or 0
+vim.cmd("noremap H ^") -- can be ^ or 0
 vim.cmd("noremap L $")
 vim.cmd("noremap K H")
 vim.cmd("noremap J L")
 
 vim.cmd('noremap <leader>y "+y')
 vim.cmd('noremap <leader>p "+p')
-vim.cmd('map <ScrollWheelUp> <C-y>')
-vim.cmd('map <ScrollWheelDown> <C-e>')
-vim.cmd('nnoremap <leader>w :w<CR>')
+vim.cmd("map <ScrollWheelUp> <C-y>")
+vim.cmd("map <ScrollWheelDown> <C-e>")
+vim.cmd("nnoremap <leader>w :w<CR>")
 
 -- LSP Keymaps
 vim.keymap.set("n", "gr", vim.lsp.buf.rename)
@@ -40,3 +40,7 @@ vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action)
 vim.cmd("noremap <leader>/ :call setreg('/', '')<CR>")
 
 vim.diagnostic.config({ virtual_text = true })
+
+-- Shows trailing whitespace and tab characters
+vim.cmd("set list")
+vim.cmd("set listchars=tab:>-,trail:-,nbsp:+")
