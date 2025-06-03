@@ -16,6 +16,13 @@ return {
                 "NvMenu",
                 "help",
             },
+            disabled_keys = {
+                -- Changes arrow keys to only be disabled in normal mode
+                ["<Up>"] = { "n" },
+                ["<Left>"] = { "n" },
+                ["<Right>"] = { "n" },
+                ["<Down>"] = { "n" },
+            },
         })
     end,
 }
