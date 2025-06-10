@@ -15,6 +15,7 @@ return {
                 "WinScrolled",
                 "CursorMoved",
             },
+            cursor_scrolls_alone = false,
         })
     end,
 }
