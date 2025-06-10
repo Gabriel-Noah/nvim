@@ -36,8 +36,10 @@ vim.keymap.set("n", "gd", vim.lsp.buf.definition)
 vim.keymap.set("n", "gD", vim.lsp.buf.declaration)
 vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action)
 
--- Clears / register
-vim.cmd("noremap <leader>/ :call setreg('/', '')<CR>")
+-- Disables search highlight
+vim.keymap.set("n", "<Esc>", function()
+    vim.cmd("noh")
+end)
 
 vim.diagnostic.config({ virtual_text = true })
 
