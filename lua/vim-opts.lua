@@ -29,6 +29,11 @@ vim.cmd("map <ScrollWheelUp> <C-y>")
 vim.cmd("map <ScrollWheelDown> <C-e>")
 vim.cmd("nnoremap <leader>w :w<CR>")
 
+-- Opens github short links in the browser in the same way gx opens full links in the browser
+vim.keymap.set("n", "<leader>gx", function()
+    vim.ui.open("https://github.com/" .. vim.fn.expand("<cfile>"))
+end)
+
 -- LSP Keymaps
 vim.keymap.set("n", "gr", vim.lsp.buf.rename)
 vim.keymap.set("n", "gh", vim.lsp.buf.hover)
