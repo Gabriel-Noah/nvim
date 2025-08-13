@@ -15,6 +15,6 @@ return {
                 diagnostics = "nvim_lsp",
             },
         })
-        vim.cmd("nnoremap <leader>q :BufferLinePickClose<CR>")
+        vim.keymap.set("n", "<leader>q", bufferline.close_with_pick)
     end,
 }
