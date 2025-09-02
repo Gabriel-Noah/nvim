@@ -4,7 +4,8 @@ return {
         dependencies = { "rcarriga/nvim-dap-ui", "nvim-neotest/nvim-nio" },
         config = function()
             local dap = require("dap")
-            require("dapui").setup()
+            local dapui = require("dapui")
+            dapui.setup()
 
             -- Keybinds
             vim.keymap.set("n", "<F5>", dap.continue)
@@ -18,6 +19,7 @@ return {
             vim.keymap.set({ "n", "v" }, "<Leader>dp", function()
                 require("dap.ui.widgets").preview()
             end)
+            vim.keymap.set("n", "<Leader>dt", dapui.toggle)
         end,
     },
     {
