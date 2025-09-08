@@ -18,6 +18,7 @@ vim.o.listchars = "tab:>-,trail:-,nbsp:+"
 vim.g.mapleader = " "
 vim.keymap.set({ "n", "v", "x" }, "<SPACE>", "<Nop>")
 vim.keymap.set("i", "kj", "<Esc>")
+vim.keymap.set("i", "<S-Tab>", "<C-d>")
 vim.keymap.set("n", "<Enter>", "o<Esc>")
 vim.keymap.set("n", "<Backspace>", "O<Esc>")
 vim.keymap.set({ "n", "v" }, "<leader>y", '"+y')
