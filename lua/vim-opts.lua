@@ -32,6 +32,9 @@ vim.keymap.set("n", "<leader>bp", function()
     vim.cmd("bp")
 end)
 
+-- Enables spell checking in text and markdown files
+vim.api.nvim_create_autocmd("BufEnter", { pattern = { "*.md", "*.txt" }, command = "set spell" })
+
 -- Opens github short links in the browser in the same way gx opens full links in the browser
 vim.keymap.set("n", "<leader>gx", function()
     vim.ui.open("https://github.com/" .. vim.fn.expand("<cfile>"))
