@@ -23,5 +23,12 @@ return {
                 { name = "path" },
             }),
         })
+        -- Disables completion on text and markdown files
+        vim.api.nvim_create_autocmd("BufEnter", {
+            pattern = { "*.md", "*.txt" },
+            callback = function()
+                cmp.setup.buffer({ enabled = false })
+            end,
+        })
     end,
 }
