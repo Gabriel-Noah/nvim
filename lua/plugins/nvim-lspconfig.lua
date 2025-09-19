@@ -24,5 +24,12 @@ return {
         lspconfig.rust_analyzer.setup({})
 
         lspconfig.vtsls.setup({})
+
+        lspconfig.tinymist.setup({
+            capabilities = capabilities,
+            settings = {
+                formatterMode = "typstyle",
+            },
+        })
     end,
 }
