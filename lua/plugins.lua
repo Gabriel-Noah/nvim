@@ -3,6 +3,4 @@ return {
     { "Mofiqul/vscode.nvim" },
     { "folke/tokyonight.nvim" },
     { "ThePrimeagen/vim-be-good" },
-    { "MunifTanjim/nui.nvim" },
-    { "rcarriga/nvim-notify" },
 }
