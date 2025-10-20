@@ -10,14 +10,15 @@ return {
                 get servers from this link to avoid headache
                 https://github.com/williamboman/mason-lspconfig.nvim?tab=readme-ov-file#available-lsp-servers
                 --]]
-                "lua_ls", --lua
-                "pyright", --python
-                "clangd", -- c/c++
-                "jdtls", -- java
+                "lua_ls",        --lua
+                "pyright",       --python
+                "clangd",        -- c/c++
+                "jdtls",         -- java
                 "rust_analyzer", -- rust
-                "vtsls", -- Typescript
+                "vtsls",         -- Typescript
             },
             automatic_installation = true,
+            automatic_enable = false,
         })
     end,
 }
