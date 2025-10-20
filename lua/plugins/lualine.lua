@@ -27,7 +27,7 @@ return {
                 lualine_c = { "filename" },
                 lualine_x = { "encoding" },
                 lualine_y = { "filetype" },
-                lualine_z = { "location" },
+                lualine_z = { "selectioncount", "location" },
             },
             inactive_sections = {
                 lualine_a = {},
