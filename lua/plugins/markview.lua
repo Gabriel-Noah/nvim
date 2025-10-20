@@ -8,5 +8,10 @@ return {
                 enable = false,
             },
         })
+        -- Disabling it for typst in the setup isn't enough
+        vim.api.nvim_create_autocmd("BufEnter", {
+            pattern = "*.typ",
+            command = "Markview disable",
+        })
     end,
 }
