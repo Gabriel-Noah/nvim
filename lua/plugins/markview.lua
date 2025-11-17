@@ -2,6 +2,7 @@ return {
     "OXY2DEV/markview.nvim",
     lazy = false,
     priority = -1000,
+    ft = "markdown",
     config = function()
         require("markview").setup({
             typst = {

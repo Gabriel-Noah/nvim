@@ -4,8 +4,7 @@ return {
         require("mini.ai").setup()
         vim.cmd("imap <S-tab> <Esc>cinb") -- Mapping using mini ai
         require("mini.comment").setup()
-        require("mini.move").setup()
-        -- require("mini.pairs").setup()
+        -- require("mini.move").setup()
         require("mini.splitjoin").setup()
         require("mini.surround").setup()
     end,

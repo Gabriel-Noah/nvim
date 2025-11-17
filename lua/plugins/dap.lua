@@ -2,6 +2,7 @@ return {
     {
         "mfussenegger/nvim-dap",
         dependencies = { "rcarriga/nvim-dap-ui", "nvim-neotest/nvim-nio" },
+        ft = { "python" },
         config = function()
             local dap = require("dap")
             local dapui = require("dapui")
@@ -24,6 +25,7 @@ return {
     },
     {
         "mfussenegger/nvim-dap-python",
+        ft = "python",
         config = function ()
             -- requires debugpy to be installed globally and executable with python3 -m debugpy
             require("dap-python").setup("python3")
