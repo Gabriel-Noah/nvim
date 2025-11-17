@@ -18,8 +18,8 @@ return {
                 ["<Tab>"] = cmp.mapping.confirm({ select = false }),
             }),
             sources = cmp.config.sources({
-                { name = "buffer" },
                 { name = "nvim_lsp" },
+                { name = "buffer" },
                 { name = "path" },
             }),
         })
