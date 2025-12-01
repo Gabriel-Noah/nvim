@@ -8,6 +8,7 @@ vim.o.autoindent = true
 vim.o.mouse = "a"
 vim.o.wrap = false
 vim.o.mousemoveevent = true
+vim.o.showmode = false
 vim.diagnostic.config({ virtual_text = true })
 
 -- Shows trailing whitespace and tab characters
