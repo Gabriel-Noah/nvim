@@ -10,6 +10,7 @@ vim.o.wrap = false
 vim.o.mousemoveevent = true
 vim.o.showmode = false
 vim.diagnostic.config({ virtual_text = true })
+vim.o.completeopt = "menuone,noselect,fuzzy"
 
 -- Shows trailing whitespace and tab characters
 vim.o.list = true

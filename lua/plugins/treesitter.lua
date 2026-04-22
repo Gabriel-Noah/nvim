@@ -12,6 +12,6 @@ return {
             },
         })
         -- Disables treesitter indentation in typst files
-        vim.api.nvim_create_autocmd("BufEnter", { pattern = "*.typ", command = "TSDisable indent" })
+        vim.api.nvim_create_autocmd("BufEnter", { pattern = { "*.typ", "*.ml" }, command = "TSDisable indent" })
     end,
 }
