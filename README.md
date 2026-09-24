@@ -1,7 +1,7 @@
 # nvim
 
 ## Requirements
-Requires neovim 0.9.0 or greater  
+Requires neovim 0.12.5  
 Requires ripgrep
 
 ### Credit
